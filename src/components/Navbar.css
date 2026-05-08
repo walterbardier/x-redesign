@@ -435,15 +435,3 @@
 .fullscreenOverlay {
   z-index: 5000;
 }
-
-.navbarContainer {
-  position: sticky;
-  top: 12px;
-  z-index: 9999;
-
-  background: rgba(0, 0, 0, 0.25); /* 👈 CLAVE */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
