@@ -25,6 +25,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --bg: #0f0f14;
+
   @media (max-width: 1024px) {
     font-size: 16px;
   }
@@ -52,6 +54,8 @@
 
 body {
   margin: 0;
+  
+  background: #0f0f14;
 }
 
 #root {
@@ -108,4 +112,11 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
