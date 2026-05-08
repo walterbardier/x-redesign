@@ -1,0 +1,315 @@
+.feed {
+  width: 100%;
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔥 ESTE ES EL GAP REAL ENTRE TWEETS */
+.tweetCard {
+  padding: 24px;
+
+  border-radius: 32px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  position: relative;
+
+  transform: translateZ(0);
+  overflow: hidden;
+
+  margin-bottom: 28px; /* 👈 ESPACIO REAL ENTRE CARDS */
+}
+
+.tweetCard:last-child {
+  margin-bottom: 0;
+}
+
+.tweetTopic {
+  position: absolute;
+
+  top: 20px;
+  right: 20px;
+
+  padding:
+    8px
+    14px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.08);
+
+  color:
+    rgba(255,255,255,0.78);
+
+  font-size: 13px;
+
+  backdrop-filter: blur(18px);
+}
+
+.tweetHeader {
+  display: flex;
+  gap: 14px;
+
+  margin-bottom: 16px;
+}
+
+.tweetAvatar {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,0.12);
+}
+
+.tweetHeader p {
+  color:
+    rgba(255,255,255,0.5);
+
+  margin-top: 3px;
+}
+
+.tweetText {
+  line-height: 1.6;
+
+  margin-bottom: 18px;
+}
+
+.tweetImage {
+  width: 100%;
+  height: 360px;
+
+  object-fit: cover;
+
+  border-radius: 24px;
+
+  cursor: pointer;
+}
+
+.tweetFooter {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 12px;
+}
+
+.tweetTime {
+  font-size: 13px;
+
+  color:
+    rgba(255,255,255,0.45);
+}
+
+.tweetActions,
+.commentActions {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 18px;
+}
+
+.leftActions,
+.rightActions {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.iconButton {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background:
+    rgba(255,255,255,0.05);
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(20px);
+}
+
+.activeIcon {
+  background:
+    rgba(255,255,255,0.16);
+
+  box-shadow:
+    0 0 18px
+    rgba(255,255,255,0.12);
+}
+
+.modalOverlay,
+.fullscreenOverlay {
+  position: fixed;
+  inset: 0;
+
+  background:
+    rgba(0,0,0,0.7);
+
+  backdrop-filter: blur(20px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+.tweetModal {
+  width: 700px;
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  padding: 24px;
+
+  border-radius: 32px;
+
+  position: relative;
+}
+
+.modalTopic {
+  margin-bottom: 10px;
+
+  display: inline-flex;
+
+  padding:
+    8px
+    14px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  font-size: 13px;
+}
+
+.closeButton,
+.fullscreenClose {
+  position: absolute;
+
+  top: 20px;
+  right: 20px;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  color: white;
+
+  cursor: pointer;
+}
+
+.modalImage {
+  width: 100%;
+
+  border-radius: 24px;
+
+  margin-bottom: 20px;
+}
+
+.modalUsername {
+  color:
+    rgba(255,255,255,0.5);
+
+  margin-bottom: 14px;
+}
+
+.modalText {
+  margin-bottom: 18px;
+
+  line-height: 1.6;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+
+  margin-top: 24px;
+}
+
+.comment {
+  padding: 18px;
+
+  border-radius: 22px;
+}
+
+.comment p {
+  margin-top: 8px;
+
+  color:
+    rgba(255,255,255,0.72);
+}
+
+.fullscreenImage {
+  max-width: 80vw;
+  max-height: 80vh;
+
+  border-radius: 30px;
+}
+
+.navArrow {
+  position: absolute;
+
+  width: 60px;
+  height: 60px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  color: white;
+
+  cursor: pointer;
+}
+
+.left {
+  left: 40px;
+}
+
+.right {
+  right: 40px;
+}
+
+.tweetCard {
+  will-change: transform, opacity, filter;
+  transform-origin: center;
+}

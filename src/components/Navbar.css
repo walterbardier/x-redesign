@@ -1,0 +1,437 @@
+/* NAVBAR.css */
+
+.navbarContainer {
+  position: sticky;
+
+  top: 12px;
+
+  z-index: 100000;
+  isolation: isolate;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 26px;
+
+  padding:
+    2px
+    4px;
+
+  animation:
+    navbarFloat 0.5s ease;
+
+  transition:
+    transform 0.35s ease,
+    backdrop-filter 0.35s ease;
+}
+
+/* FLOAT */
+
+@keyframes navbarFloat {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-10px)
+      scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0px)
+      scale(1);
+  }
+}
+
+/* LEFT */
+
+.logoCircle {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  color: white;
+
+  cursor: pointer;
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.logoCircle::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at var(--x) var(--y),
+      rgba(255,255,255,0.08),
+      transparent 58%
+    );
+
+  opacity: 0;
+
+  transition:
+    opacity 0.18s ease;
+}
+
+.logoCircle:hover::before {
+  opacity: 1;
+}
+
+.logoCircle:hover {
+  box-shadow:
+    0 0 24px rgba(255,255,255,0.05);
+}
+
+/* CENTER */
+
+.navTabs {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px;
+
+  border-radius: 999px;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.navTabs::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at var(--x) var(--y),
+      rgba(255,255,255,0.06),
+      transparent 48%
+    );
+
+  opacity: 0;
+
+  transition:
+    opacity 0.18s ease;
+}
+
+.navTabs:hover::before {
+  opacity: 1;
+}
+
+.navTabs button {
+  border: none;
+
+  background: transparent;
+
+  color:
+    rgba(255,255,255,0.68);
+
+  padding:
+    12px
+    20px;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  position: relative;
+
+  z-index: 2;
+
+  transition:
+    transform 0.22s ease,
+    color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.navTabs button:hover {
+  transform:
+    translateY(-2px);
+
+  color: white;
+}
+
+.activeTab {
+  background:
+    rgba(255,255,255,0.11);
+
+  color:
+    white !important;
+
+  box-shadow:
+    0 0 18px rgba(255,255,255,0.06);
+}
+
+/* PROFILE */
+
+.profileWrapper {
+  position: relative;
+
+  width: 54px;
+  height: 54px;
+
+  flex-shrink: 0;
+}
+
+.profileButton {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+
+  will-change:
+    transform,
+    opacity,
+    filter;
+}
+
+.profileButton::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,255,255,0.08),
+      transparent 62%
+    );
+
+  opacity: 0;
+
+  transition:
+    opacity 0.18s ease;
+}
+
+.profileButton:hover::before {
+  opacity: 1;
+}
+
+.profileButton:hover {
+  box-shadow:
+    0 0 24px rgba(255,255,255,0.05);
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* MENU */
+
+.profileMenu {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 285px;
+
+  padding: 18px;
+
+  border-radius: 32px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  overflow: hidden;
+
+  transform-origin: top right;
+
+  box-shadow:
+    0 18px 60px rgba(0,0,0,0.42);
+
+  will-change:
+    transform,
+    opacity,
+    filter;
+
+  backdrop-filter:
+    blur(34px);
+
+  -webkit-backdrop-filter:
+    blur(34px);
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 10px;
+}
+
+.menuAvatar {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+}
+
+.profileHeader p {
+  color:
+    rgba(255,255,255,0.5);
+}
+
+.profileMenu button {
+  border: none;
+
+  background: transparent;
+
+  color: white;
+
+  text-align: left;
+
+  padding:
+    12px
+    14px;
+
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.22s ease,
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.profileMenu button:hover {
+  background:
+    rgba(255,255,255,0.07);
+
+  transform:
+    translateX(2px);
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  margin:
+    8px
+    0;
+}
+
+.switchTitle {
+  font-size: 13px;
+
+  color:
+    rgba(255,255,255,0.48);
+
+  padding-left: 6px;
+}
+
+/* IOS SCROLL SHRINK */
+
+@media (min-width: 768px) {
+
+  .navbarContainer {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  body.scrolled .navbarContainer {
+    transform:
+      scale(0.985);
+
+    top: 8px;
+  }
+
+  body.scrolled .logoCircle,
+  body.scrolled .profileButton {
+    width: 50px;
+    height: 50px;
+  }
+
+  body.scrolled .profileWrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  body.scrolled .navTabs {
+    padding: 6px;
+  }
+
+  body.scrolled .navTabs button {
+    padding:
+      10px
+      18px;
+  }
+}
+
+.homeIcon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+.modalOverlay,
+.fullscreenOverlay {
+  z-index: 5000;
+}
