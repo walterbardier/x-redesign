@@ -1,10 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
 import {
-  House
-} from 'lucide-react'
-
-import {
   motion,
   AnimatePresence
 } from 'framer-motion'
@@ -13,7 +9,7 @@ import xLogo from '../assets/x-logo.png'
 
 import './Navbar.css'
 
-export default function Navbar() {
+export default function Navbar({ tweetModalOpen = false }) {
 
   const [activeTab, setActiveTab] =
     useState('forYou')
@@ -22,6 +18,14 @@ export default function Navbar() {
     useState(false)
 
   const menuRef = useRef()
+
+  useEffect(() => {
+
+    if (tweetModalOpen) {
+      setOpen(false)
+    }
+
+  }, [tweetModalOpen])
 
   const goHome = () => {
 
@@ -88,228 +92,305 @@ export default function Navbar() {
 
       {/* LEFT */}
 
-      <motion.button
-        whileHover={{
-          y: -3,
-          scale: 1.04
-        }}
+      <AnimatePresence mode="popLayout">
 
-        whileTap={{
-          scale: 0.96
-        }}
+        {!tweetModalOpen && (
 
-        transition={{
-          duration: 0.18,
-          ease: [0.22, 1, 0.36, 1]
-        }}
+          <motion.button
+            key="navLogo"
 
-        className="logoCircle glass"
+            initial={false}
 
-        onClick={goHome}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              filter: 'blur(0px)'
+            }}
 
-        onMouseMove={handleLiquidHover}
-      >
+            exit={{
+              opacity: 0,
+              scale: 0.92,
+              filter: 'blur(12px)'
+            }}
 
-        {/* <House size={20} /> */}
-        <img
-          src={xLogo}
-          alt="Home"
-          className="homeIcon"
-        />
+            transition={{
+              duration: 0.2,
+              ease: [0.22, 1, 0.36, 1]
+            }}
 
-      </motion.button>
+            whileHover={{
+              y: -3,
+              scale: 1.04
+            }}
+
+            whileTap={{
+              scale: 0.96
+            }}
+
+            className="logoCircle glass"
+
+            onClick={goHome}
+
+            onMouseMove={handleLiquidHover}
+          >
+
+            <img
+              src={xLogo}
+              alt="Home"
+              className="homeIcon"
+            />
+
+          </motion.button>
+
+        )}
+
+      </AnimatePresence>
 
       {/* CENTER */}
 
-      <div
-        className="navTabs glass"
+      <AnimatePresence mode="popLayout">
 
-        onMouseMove={handleLiquidHover}
-      >
+        {!tweetModalOpen && (
 
-        <motion.button
-          whileHover={{
-            y: -2
-          }}
+          <motion.div
+            key="navTabs"
+            className="navTabs glass"
 
-          whileTap={{
-            scale: 0.96
-          }}
+            initial={false}
 
-          className={
-            activeTab === 'forYou'
-              ? 'activeTab'
-              : ''
-          }
+            animate={{
+              opacity: 1,
+              scale: 1,
+              filter: 'blur(0px)'
+            }}
 
-          onClick={() =>
-            setActiveTab('forYou')
-          }
-        >
+            exit={{
+              opacity: 0,
+              scale: 0.92,
+              filter: 'blur(12px)'
+            }}
 
-          For You
+            transition={{
+              duration: 0.2,
+              ease: [0.22, 1, 0.36, 1]
+            }}
 
-        </motion.button>
+            onMouseMove={handleLiquidHover}
+          >
 
-        <motion.button
-          whileHover={{
-            y: -2
-          }}
+            <motion.button
+              whileHover={{
+                y: -2
+              }}
 
-          whileTap={{
-            scale: 0.96
-          }}
+              whileTap={{
+                scale: 0.96
+              }}
 
-          className={
-            activeTab === 'following'
-              ? 'activeTab'
-              : ''
-          }
+              className={
+                activeTab === 'forYou'
+                  ? 'activeTab'
+                  : ''
+              }
 
-          onClick={() =>
-            setActiveTab('following')
-          }
-        >
+              onClick={() =>
+                setActiveTab('forYou')
+              }
+            >
 
-          Following
+              For You
 
-        </motion.button>
+            </motion.button>
 
-      </div>
+            <motion.button
+              whileHover={{
+                y: -2
+              }}
+
+              whileTap={{
+                scale: 0.96
+              }}
+
+              className={
+                activeTab === 'following'
+                  ? 'activeTab'
+                  : ''
+              }
+
+              onClick={() =>
+                setActiveTab('following')
+              }
+            >
+
+              Following
+
+            </motion.button>
+
+          </motion.div>
+
+        )}
+
+      </AnimatePresence>
 
       {/* RIGHT */}
 
-      <div
-        className="profileWrapper"
-        ref={menuRef}
-      >
+      <AnimatePresence mode="popLayout">
 
-        {/* PROFILE BUTTON */}
+        {!tweetModalOpen && (
 
-        <motion.button
-          layoutId="profileMorph"
+          <motion.div
+            key="navProfile"
 
-          animate={{
-            opacity: open ? 0 : 1,
-            scale: open ? 0.92 : 1,
-            filter: open
-              ? 'blur(12px)'
-              : 'blur(0px)'
-          }}
+            className="profileWrapper"
 
-          transition={{
-            duration: 0.16,
-            ease: [0.22, 1, 0.36, 1]
-          }}
+            ref={menuRef}
 
-          whileHover={{
-            y: -3,
-            scale: 1.03
-          }}
+            initial={false}
 
-          whileTap={{
-            scale: 0.97
-          }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              filter: 'blur(0px)'
+            }}
 
-          className="profileButton glass"
+            exit={{
+              opacity: 0,
+              scale: 0.92,
+              filter: 'blur(12px)'
+            }}
 
-          onClick={() =>
-            setOpen(true)
-          }
+            transition={{
+              duration: 0.2,
+              ease: [0.22, 1, 0.36, 1]
+            }}
+          >
 
-          onMouseMove={handleLiquidHover}
-        >
-
-          <img
-            src="https://i.pravatar.cc/150?img=12"
-            alt=""
-            className="profileImage"
-          />
-
-        </motion.button>
-
-        {/* MENU */}
-
-        <AnimatePresence>
-
-          {open && (
-
-            <motion.div
+            <motion.button
               layoutId="profileMorph"
 
-              initial={{
-                opacity: 0,
-                scale: 0.88,
-                filter: 'blur(18px)'
-              }}
-
               animate={{
-                opacity: 1,
-                scale: 1,
-                filter: 'blur(0px)'
-              }}
-
-              exit={{
-                opacity: 0,
-                scale: 0.92,
-                filter: 'blur(18px)'
+                opacity: open ? 0 : 1,
+                scale: open ? 0.92 : 1,
+                filter: open
+                  ? 'blur(12px)'
+                  : 'blur(0px)'
               }}
 
               transition={{
-                duration: 0.18,
+                duration: 0.16,
                 ease: [0.22, 1, 0.36, 1]
               }}
 
-              className="profileMenu glass"
+              whileHover={{
+                y: -3,
+                scale: 1.03
+              }}
+
+              whileTap={{
+                scale: 0.97
+              }}
+
+              className="profileButton glass"
+
+              onClick={() =>
+                setOpen(true)
+              }
+
+              onMouseMove={handleLiquidHover}
             >
 
-              <div className="profileHeader">
+              <img
+                src="https://i.pravatar.cc/150?img=12"
+                alt=""
+                className="profileImage"
+              />
 
-                <img
-                  src="https://i.pravatar.cc/150?img=12"
-                  className="menuAvatar"
-                />
+            </motion.button>
 
-                <div>
-                  <h4>Walter Bardier</h4>
-                  <p>@walterbardier</p>
-                </div>
+            <AnimatePresence>
 
-              </div>
+              {open && (
 
-              <button>
-                Perfil
-              </button>
+                <motion.div
+                  layoutId="profileMorph"
 
-              <button>
-                Configuración
-              </button>
+                  initial={{
+                    opacity: 0,
+                    scale: 0.88,
+                    filter: 'blur(18px)'
+                  }}
 
-              <button>
-                Cerrar sesión
-              </button>
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    filter: 'blur(0px)'
+                  }}
 
-              <div className="divider"></div>
+                  exit={{
+                    opacity: 0,
+                    scale: 0.92,
+                    filter: 'blur(18px)'
+                  }}
 
-              <p className="switchTitle">
-                Cambiar cuenta
-              </p>
+                  transition={{
+                    duration: 0.18,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
 
-              <button>
-                @designarchive
-              </button>
+                  className="profileMenu glass"
+                >
 
-              <button>
-                @lavenderstudio
-              </button>
+                  <div className="profileHeader">
 
-            </motion.div>
+                    <img
+                      src="https://i.pravatar.cc/150?img=12"
+                      className="menuAvatar"
+                    />
 
-          )}
+                    <div>
+                      <h4>Walter Bardier</h4>
+                      <p>@walterbardier</p>
+                    </div>
 
-        </AnimatePresence>
+                  </div>
 
-      </div>
+                  <button>
+                    Perfil
+                  </button>
+
+                  <button>
+                    Configuración
+                  </button>
+
+                  <button>
+                    Cerrar sesión
+                  </button>
+
+                  <div className="divider"></div>
+
+                  <p className="switchTitle">
+                    Cambiar cuenta
+                  </p>
+
+                  <button>
+                    @designarchive
+                  </button>
+
+                  <button>
+                    @lavenderstudio
+                  </button>
+
+                </motion.div>
+
+              )}
+
+            </AnimatePresence>
+
+          </motion.div>
+
+        )}
+
+      </AnimatePresence>
 
     </div>
   )
